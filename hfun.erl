@@ -1,6 +1,7 @@
 -module(hfun).
 -compile(export_all).
 
+% Try processes communication
 
 ping() ->
     Pid = spawn(fun pong/0),
@@ -31,6 +32,8 @@ pong() ->
         io:format("pong finished~n")
     end
 .
+
+% From the lessons learned about high ordered functions:
 
 fold(_, Start, []) -> Start;
 fold(F, Start, [H|T]) -> fold(F, F(H, Start), T).

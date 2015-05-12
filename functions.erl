@@ -14,12 +14,13 @@
         zip/2
 ]).
 
+% Find maximum value from list
+
 max([H|T]) -> tail_max(T, H).
 
 tail_max([], Max) -> Max;
 tail_max([H|T], Max) when H > Max -> tail_max(T, H);
 tail_max([_|T], Max) -> tail_max(T, Max).
-
 
 
 head([H|_]) -> H.
@@ -42,6 +43,8 @@ map(F, [H|T]) -> [F(H)|map(F, T)].
 
 incr(X) -> X + 1.
 decr(X) -> X - 1.
+
+% Tail called sublist of N values from the L list:
 
 sublist(L, N) -> lists:reverse(tail_sublist(L, N, [])).
 tail_sublist(_, 0, Sublist) -> Sublist;
